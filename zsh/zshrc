@@ -1,0 +1,8 @@
+umask 027
+alias ls='ls -G'
+
+export EDITOR=/usr/bin/vim
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export MANPATH=/opt/software/man:/opt/software/share/man:/usr/share/man
+
+

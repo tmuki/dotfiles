@@ -1,0 +1,44 @@
+set nocompatible
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+
+set cul
+set history=50
+set showmode
+set showcmd
+set nowrap
+set number
+set shiftwidth=2
+set ts=2
+set expandtab
+set cindent
+set visualbell
+set laststatus=2
+colorscheme elflord
+set statusline=%<%f%=\ [%1*%M%*%n%R%H]\ \ %-25(%3l,%c%03V\ \ %P\ (%L)%)%12o'%03b'
+
+set backspace=indent,eol,start
+
+set printoptions=paper:a4
+
+set foldmethod=indent
+set foldlevel=0
+set foldnestmax=2
+
+map F :let &fen = !&fen<CR>
+
+" ROT13 decode/encode the selected text (visual mode).
+" " Alternative: 'unmap g' and then use 'g?'.
+vmap rot :!tr A-Za-z N-ZA-Mn-za-m<CR>
+
+map <F8> :NERDTreeToggle<CR>
+
+"set tags=./tags,./TAGS,tags,TAGS,~/Work/Repositories/EyeOne/trunk/Source/server/tags,/usr/lib/jvm/java-6-sun/src/tags
+set tags=./tags,./TAGS,tags,TAGS
+
+" ,/ C/C++/C#/Java // comments
+map ,c :s/^/\/\/ /<CR>
+map ,C :s.^// .. <CR> :noh <CR>
+
