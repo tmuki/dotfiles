@@ -34,6 +34,7 @@ map F :let &fen = !&fen<CR>
 vmap rot :!tr A-Za-z N-ZA-Mn-za-m<CR>
 
 map <F8> :NERDTreeToggle<CR>
+map <F2> <Esc>:1,$!xmllint --format -<CR>
 
 "set tags=./tags,./TAGS,tags,TAGS,~/Work/Repositories/EyeOne/trunk/Source/server/tags,/usr/lib/jvm/java-6-sun/src/tags
 set tags=./tags,./TAGS,tags,TAGS
