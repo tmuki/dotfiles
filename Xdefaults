@@ -1,0 +1,8 @@
+XTerm*background: #1f3048
+XTerm*foreground: #a7c2cc
+XTerm*highlightColor: #ffffff
+XTerm*utf8: 1
+XTerm*faceName: Dejavu Sans Mono:size=8
+XTerm*boldFont: Dejavu Sans Mono:style=Bold:size=8
+XTerm*scrollBar: false
+XTerm*colorMode: true
