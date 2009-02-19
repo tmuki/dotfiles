@@ -1,8 +1,214 @@
-XTerm*background: #1f3048
-XTerm*foreground: #a7c2cc
-XTerm*highlightColor: #ffffff
-XTerm*utf8: 1
-XTerm*faceName: Dejavu Sans Mono:size=8
-XTerm*boldFont: Dejavu Sans Mono:style=Bold:size=8
-XTerm*scrollBar: false
-XTerm*colorMode: true
+Xcursor*theme:                  neutral
+
+URxvt*font:                     -*-terminus-medium-r-*-*-12-100-*-*-*-*-*-*
+URxvt*boldFont:                 -*-terminus-medium-r-*-*-12-100-*-*-*-*-*-*
+URxvt*italicFont:               -*-terminus-medium-r-*-*-12-100-*-*-*-*-*-*
+URxvt*boldItalicFont:           -*-terminus-medium-r-*-*-12-100-*-*-*-*-*-*
+
+!URxvt*font:                     -*-dina-medium-r-normal-*-13-*-*-*-*-*-*-*
+
+!URxvt*font:                     xft:Liberation Mono:pixelsize=10
+!URxvt*font:                     xft:Inconsolata:pixelsize=12
+!URxvt*boldFont:                 xft:Inconsolata:pixelsize=12
+
+!URxvt*font:                     xft:Dejavu Sans Mono:bold:pixelsize=10
+
+!URxvt*font:                     xft:Monaco:pixelsize=10
+!URxvt*boldFont:                 xft:Monaco:pixelsize=10
+
+!URxvt*termName: rxvt-256color
+URxvt*saveLines:                32767
+URxvt*scrollBar:	            false
+URxvt*scrollBar_right:	        true
+URxvt*loginShell:	            true
+!URxvt*tintColor:                #000000
+URxvt*shading:                  30
+URxvt*termName:		            rxvt-unicode
+!URxvt*inheritPixmap:	        true
+URxvt*cutchars:		            "()*,<>[]{}|"
+URxvt*secondaryScroll:	        true
+urxvt*perl-lib:		            /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:	        default,matcher
+URxvt*urlLauncher:	            /usr/bin/firefox
+URxvt*matcher.button:	        1
+URxvt*matcher.pattern.1:        \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt*visualBell:	            true
+URxvt*keysym.C-u:               perl:matcher
+URxvt*urgentOnBell:             true
+
+xterm*utf8:                     2
+*background:  #1e1e1e
+*foreground:  #dcdccc
+
+! ---| Tango |--- {{{
+
+! Black
+*color0:  #1e1e1e
+*color8:  #555753
+! Red
+*color1:  #CC0000
+*color9:  #EF2929
+! Green
+*color2:  #4E9A06
+*color10: #8AE234
+! Yellow
+*color3:  #C4A000
+*color11: #FCE94F
+! Blue
+*color4:  #3465A4
+*color12: #729FCF
+! Purple
+*color5:  #75507B
+*color13: #AD7FA8
+! Cyan
+*color6:  rgb:06/98/9A
+*color14: #34E2E2
+! White
+*color7:  #9f9f9f
+*color15: #e0e0e0
+
+!}}}
+
+! ---| Zenburn |--- {{{
+
+! Zenburn
+! black + red
+!*color0:      #1E2320
+!*color1:      #705050
+! green + yellow
+!*color2:      #60b48a
+!*color3:      #dfaf8f
+! blue + purple
+!*color4:      #506070
+!*color5:      #dc8cc3
+! cyan + white
+!*color6:      #8cd0d3
+!*color7:      #dcdccc
+! bright-black + bright-red
+!*color8:      #709080
+!*color9:      #dca3a3
+! bright-green + bright-yellow
+!*color10:     #c3bf9f
+!*color11:     #f0dfaf
+! bright-blue + bright-purple
+!*color12:     #94bff3
+!*color13:     #ec93d3
+! bright-cyan + bright-white
+!*color14:     #93e0e3
+!*color15:     #ffffff
+
+!}}}
+
+! ---| Mr.Elendig |--- {{{ 
+!URxvt*cursorColor: #FFAF00
+
+! black
+!*color0:  #000000
+!*color8:  #9999AA
+
+! red
+!*color1:  #DE1923
+!*color9:  #FF6050
+
+! green
+!*color2:  #559933
+!*color10: #66D077
+
+! yellow
+!*color3:  #FF9922
+!*color11: #FFFFAF
+
+! blue
+!*color4:  #3579A8
+!*color12: #4EB4FA
+
+! magenta
+!*color5:  #BB88DD
+!*color13: #D7AFD7
+
+! cyan
+!*color6:  #00BBDD
+!*color14: #0DEBFF
+
+! white
+!*color7:  #C7C7C7
+!*color15: #D9D9D9
+
+!}}}
+
+! ---| fwojciec |--- {{{
+!*color0:                rgb:1e/1e/1e
+!*color1:                rgb:98/56/5e
+!*color2:                rgb:66/82/5d
+!*color3:                rgb:96/91/76
+!*color4:                rgb:4d/65/85
+!*color5:                rgb:96/73/95
+!*color6:                rgb:5f/7f/7b
+!*color7:                rgb:e0/e0/e0
+!*color8:                rgb:73/73/73
+!*color9:                rgb:cf/a3/a9
+!*color10:               rgb:ca/f7/bb
+!*color11:               rgb:ff/f8/bc
+!*color12:               rgb:83/a3/be
+!*color13:               rgb:bb/a9/cf
+!*color14:               rgb:96/cc/cc
+!*color15:               rgb:8f/8f/8f
+!}}}
+
+! ---| xcalc |--- {{{
+xcalc*geometry: 210x275
+xcalc.ti.bevel.background: #111111
+xcalc.ti.bevel.screen.background: #000000
+xcalc.ti.bevel.screen.DEG.background: #000000
+xcalc.ti.bevel.screen.DEG.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.GRAD.background: #000000
+xcalc.ti.bevel.screen.GRAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.RAD.background: #000000
+xcalc.ti.bevel.screen.RAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.INV.background: #000000
+xcalc.ti.bevel.screen.INV.foreground: Red
+xcalc.ti.bevel.screen.LCD.background: #000000
+xcalc.ti.bevel.screen.LCD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.LCD.shadowWidth: 0
+xcalc.ti.bevel.screen.M.background: #000000
+xcalc.ti.bevel.screen.M.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.P.background: #000000
+xcalc.ti.bevel.screen.P.foreground: Yellow
+xcalc.ti.Command.foreground: White
+xcalc.ti.Command.background: #777777
+xcalc.ti.button3.label: SQRT
+XCalc*ti.button3.font: -*-verdana-medium-r-normal--11-*-*-*-*-*-*-*
+xcalc.ti.button5.background: Orange3
+xcalc.ti.button19.background: #611161
+xcalc.ti.button18.background: #611161
+xcalc.ti.button20.background: #611111
+xcalc.ti.button25.background: #722222
+xcalc.ti.button30.background: #833333
+xcalc.ti.button35.background: #944444
+xcalc.ti.button40.background: #a55555
+xcalc.ti.button22.background: #222262
+xcalc.ti.button23.background: #222262
+xcalc.ti.button24.background: #222272
+xcalc.ti.button27.background: #333373
+xcalc.ti.button28.background: #333373
+xcalc.ti.button29.background: #333373
+xcalc.ti.button32.background: #444484
+xcalc.ti.button33.background: #444484
+xcalc.ti.button34.background: #444484
+xcalc.ti.button37.background: #555595
+xcalc.ti.button38.background: #555595
+xcalc.ti.button39.background: #555595
+XCalc*Cursor:                 hand2
+XCalc*ShapeStyle:             rectangle
+XCalc*Font: -*-verdana-medium-r-normal--11-*-*-*-*-*-*-*
+XCalc*bevel.screen.LCD.Font: -*-verdana-bold-r-normal--12-*-*-*-*-*-*-*
+!}}}
+
+! ---| xpdf |--- {{{
+xpdf*enableFreetype: yes
+xpdf*antialias: yes
+xpdf*foreground: black
+xpdf*background: white
+xpdf*urlCommand: /usr/bin/firefox %s
+xpdf*viKeys: on
+!}}}

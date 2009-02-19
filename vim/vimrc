@@ -4,6 +4,39 @@ filetype on
 filetype indent on
 filetype plugin on
 
+
+if has("gui_running")
+    let &guicursor = &guicursor . ",a:blinkon0"
+    set guioptions-=e
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=r
+    set guioptions+=a
+    set guioptions+=c
+    colorscheme wombat
+    if has ('win32')
+        set columns=120
+        set lines=60
+        set guifont=Bitstream_Vera_Sans_Mono:h8:cANSI
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 8
+    endif
+elseif (&term =~ 'linux')
+    set t_Co=16
+    set mouse=a
+    set termencoding=utf-8
+    set nocursorline
+    colorscheme desert
+else
+    set t_Co=256
+    colorscheme twilight
+    "colorscheme zenburn
+    set mouse=a
+    set ttymouse=xterm
+    set termencoding=utf-8
+endif
+
+
 set cul
 set history=50
 set showmode
@@ -16,7 +49,6 @@ set expandtab
 set cindent
 set visualbell
 set laststatus=2
-colorscheme elflord
 set statusline=%<%f%=\ [%1*%M%*%n%R%H]\ \ %-25(%3l,%c%03V\ \ %P\ (%L)%)%12o'%03b'
 
 set backspace=indent,eol,start
@@ -34,7 +66,7 @@ map F :let &fen = !&fen<CR>
 vmap rot :!tr A-Za-z N-ZA-Mn-za-m<CR>
 
 map <F8> :NERDTreeToggle<CR>
-map <F2> <Esc>:1,$!xmllint --format -<CR>
+map ,f <Esc>:1,$!xmllint --format -<CR>
 
 "set tags=./tags,./TAGS,tags,TAGS,~/Work/Repositories/EyeOne/trunk/Source/server/tags,/usr/lib/jvm/java-6-sun/src/tags
 set tags=./tags,./TAGS,tags,TAGS
@@ -42,4 +74,49 @@ set tags=./tags,./TAGS,tags,TAGS
 " ,/ C/C++/C#/Java // comments
 map ,c :s/^/\/\/ /<CR>
 map ,C :s.^// .. <CR> :noh <CR>
+
+noremap <C-O> :call JavaInsertImport()<CR>
+function! JavaInsertImport()
+  exe "normal mz"
+  let cur_class = expand("<cword>")
+  try
+    if search('^\s*import\s.*\.' . cur_class . '\s*;') > 0
+      throw getline('.') . ": import already exist!"
+    endif
+    wincmd }
+    wincmd P
+    1
+    if search('^\s*public.*\s\%(class\|interface\)\s\+' . cur_class) > 0
+      1
+      if search('^\s*package\s') > 0
+        yank y
+      else
+        throw "Package definition not found!"
+      endif
+    else
+      throw cur_class . ": class not found!"
+    endif
+    wincmd p
+    normal! G
+    " insert after last import or in first line
+    if search('^\s*import\s', 'b') > 0
+      put y
+    else
+      1
+      put! y
+    endif
+    substitute/^\s*package/import/g
+    substitute/\s\+/ /g
+    exe "normal! 2ER." . cur_class . ";\<Esc>lD"
+  catch /.*/
+    echoerr v:exception
+  finally
+    " wipe preview window (from buffer list)
+    silent! wincmd P
+    if &previewwindow
+      bwipeout
+    endif
+    exe "normal! `z"
+  endtry
+endfunction
 
