@@ -21,16 +21,8 @@ if has("gui_running")
     else
         set guifont=DejaVu\ Sans\ Mono\ 8
     endif
-elseif (&term =~ 'linux')
-    set t_Co=16
-    set mouse=a
-    set termencoding=utf-8
-    set nocursorline
-    colorscheme desert
 else
-    set t_Co=256
-    colorscheme twilight
-    "colorscheme zenburn
+    colorscheme desert
     set mouse=a
     set ttymouse=xterm
     set termencoding=utf-8

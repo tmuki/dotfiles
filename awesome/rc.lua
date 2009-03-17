@@ -1,12 +1,12 @@
 -- Include awesome libraries, with lots of useful function!
 require("awful")
 require("beautiful")
-require("wicked")
+-- require("wicked")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- The default is a dark theme
-theme_path = "/usr/local/share/awesome/themes/default/theme"
+theme_path = "/usr/share/awesome/themes/hacker/theme"
 -- Uncommment this for a lighter theme
 -- theme_path = "/usr/local/share/awesome/themes/sky/theme"
 
@@ -14,7 +14,7 @@ theme_path = "/usr/local/share/awesome/themes/default/theme"
 beautiful.init(theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
