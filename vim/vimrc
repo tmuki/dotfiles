@@ -30,15 +30,15 @@ endif
 
 
 set cul
-set history=50
+set history=100
 set showmode
 set showcmd
 set nowrap
 set number
-set shiftwidth=2
-set ts=2
+set shiftwidth=4
+set ts=4
 set expandtab
-set cindent
+" set cindent
 set visualbell
 set laststatus=2
 set statusline=%<%f%=\ [%1*%M%*%n%R%H]\ \ %-25(%3l,%c%03V\ \ %P\ (%L)%)%12o'%03b'
@@ -51,21 +51,41 @@ set foldmethod=indent
 set foldlevel=0
 set foldnestmax=2
 
-map F :let &fen = !&fen<CR>
+let java_comment_strings=1
+let java_highlight_java_lang_ids=1
+let java_mark_braces_in_parens_as_errors=1
+let java_highlight_all=1
+let java_highlight_debug=1
+let java_ignore_javadoc=1
+let java_highlight_java_lang_ids=1
+let java_highlight_functions="style"
+let java_minlines = 150
 
-" ROT13 decode/encode the selected text (visual mode).
-" " Alternative: 'unmap g' and then use 'g?'.
-vmap rot :!tr A-Za-z N-ZA-Mn-za-m<CR>
+
+let g:haskell_indent_if = 2
+
+
+" Some Java abbreviations..
+iabbrev sysout System.out.println();<Esc>:call search(')','b')<cr>cf:
+iabbrev syserr System.err.println();<Esc>:call search(')','b')<cr>cf:
+
+map F :let &fen = !&fen<CR>
 
 map <F8> :NERDTreeToggle<CR>
 map ,f <Esc>:1,$!xmllint --format -<CR>
 
 "set tags=./tags,./TAGS,tags,TAGS,~/Work/Repositories/EyeOne/trunk/Source/server/tags,/usr/lib/jvm/java-6-sun/src/tags
-set tags=./tags,./TAGS,tags,TAGS
+set tags=./tags,./TAGS,tags,TAGS,/usr/lib/jvm/java-6-sun/src/tags
 
 " ,/ C/C++/C#/Java // comments
 map ,c :s/^/\/\/ /<CR>
 map ,C :s.^// .. <CR> :noh <CR>
+
+
+if has("autocmd")
+  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+endif
+
 
 noremap <C-O> :call JavaInsertImport()<CR>
 function! JavaInsertImport()
@@ -112,3 +132,7 @@ function! JavaInsertImport()
   endtry
 endfunction
 
+
+"function! JavaLoadClassTemplate(classname)
+" TODO: Code you damn monkey!  
+"endfunction
