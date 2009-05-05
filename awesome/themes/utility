@@ -1,0 +1,47 @@
+-- I love Consolas.
+font = Dejavu Sans 8
+
+-- Focused colors.
+fg_focus     = #ffffff
+bg_focus     = #000000
+border_focus = #ff9900
+
+-- Unfocused colors.
+fg_normal     = #999999
+bg_normal     = #3a3a3a
+border_normal = #1a1a1a
+
+-- Marked colors.
+fg_urgent     = #ffffff
+bg_urgent     = #cc0066
+border_marked = #9e1828
+
+-- Bored width in pixels.
+border_width = 3
+
+taglist_squares_sel    = /usr/share/awesome/themes/default/taglist/squarefw.png
+taglist_squares_unsel  = /usr/share/awesome/themes/default/taglist/squarew.png
+tasklist_floating_icon = /usr/share/awesome/themes/default/tasklist/floatingw.png
+
+menu_submenu_icon = /home/saern/.config/awesome/icons/submenu.png
+menu_height       = 15
+menu_width        = 100
+
+use_titlebar          = true
+taglist_squares       = true
+titlebar_close_button = true
+
+wallpaper_cmd     = awsetbg /home/saern/Desktop/Futura_Space.jpg
+layout_dwindle    = /usr/share/awesome/themes/default/layouts/dwindlew.png
+layout_fairh      = /usr/share/awesome/themes/default/layouts/fairhw.png
+layout_fairv      = /usr/share/awesome/themes/default/layouts/fairvw.png
+layout_floating   = /usr/share/awesome/themes/default/layouts/floatingw.png
+layout_magnifier  = /usr/share/awesome/themes/default/layouts/magnifierw.png
+layout_max        = /usr/share/awesome/themes/default/layouts/maxw.png
+layout_fullscreen = /usr/share/awesome/themes/default/layouts/fullscreenw.png
+layout_spiral     = /usr/share/awesome/themes/default/layouts/spiralw.png
+layout_tilebottom = /usr/share/awesome/themes/default/layouts/tilebottomw.png
+layout_tileleft   = /usr/share/awesome/themes/default/layouts/tileleftw.png
+layout_tile       = /usr/share/awesome/themes/default/layouts/tilew.png
+layout_tiletop    = /usr/share/awesome/themes/default/layouts/tiletopw.png
+awesome_icon      = /usr/share/awesome/icons/awesome16.png
