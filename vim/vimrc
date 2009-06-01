@@ -13,14 +13,9 @@ if has("gui_running")
     set guioptions-=r
     set guioptions+=a
     set guioptions+=c
+"    colorscheme oceandeep 
     colorscheme wombat
-    if has ('win32')
-        set columns=120
-        set lines=60
-        set guifont=Bitstream_Vera_Sans_Mono:h8:cANSI
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 8
-    endif
+    set guifont=Bitstream\ Vera\ Sans\ Mono\ 9 antialias
 else
     colorscheme desert
     set mouse=a
@@ -31,12 +26,13 @@ endif
 
 set cul
 set history=100
+set wildmenu
 set showmode
 set showcmd
 set nowrap
 set number
-set shiftwidth=4
-set ts=4
+set shiftwidth=3
+set ts=3
 set expandtab
 " set cindent
 set visualbell
@@ -51,87 +47,104 @@ set foldmethod=indent
 set foldlevel=0
 set foldnestmax=2
 
-let java_comment_strings=1
-let java_highlight_java_lang_ids=1
-let java_mark_braces_in_parens_as_errors=1
-let java_highlight_all=1
-let java_highlight_debug=1
-let java_ignore_javadoc=1
-let java_highlight_java_lang_ids=1
-let java_highlight_functions="style"
-let java_minlines = 150
 
 
-let g:haskell_indent_if = 2
+" ------- ECLIM --------------
+
+let g:EclimBrowser='firefox'
+
+
+
+map <F8> :ProjectTree jmemsearch<CR>
+noremap <C-O> :JavaImportMissing<CR>
+
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+
+" ----- END OF ECLIM ---------
+
+" let java_comment_strings=1
+" let java_highlight_java_lang_ids=1
+" let java_mark_braces_in_parens_as_errors=1
+" let java_highlight_all=1
+" let java_highlight_debug=1
+" let java_ignore_javadoc=1
+" let java_highlight_java_lang_ids=1
+" let java_highlight_functions="style"
+" let java_minlines = 150
+
+
+
+" let g:haskell_indent_if = 2
 
 
 " Some Java abbreviations..
-iabbrev sysout System.out.println();<Esc>:call search(')','b')<cr>cf:
-iabbrev syserr System.err.println();<Esc>:call search(')','b')<cr>cf:
+"iabbrev sysout System.out.println();<Esc>:call search(')','b')<cr>cf:
+"iabbrev syserr System.err.println();<Esc>:call search(')','b')<cr>cf:
 
 map F :let &fen = !&fen<CR>
 
-map <F8> :NERDTreeToggle<CR>
+" Replaced by Eclims project tree
+"map <F8> :NERDTreeToggle<CR>
 map ,f <Esc>:1,$!xmllint --format -<CR>
 
 "set tags=./tags,./TAGS,tags,TAGS,~/Work/Repositories/EyeOne/trunk/Source/server/tags,/usr/lib/jvm/java-6-sun/src/tags
-set tags=./tags,./TAGS,tags,TAGS,/usr/lib/jvm/java-6-sun/src/tags
+set tags=./tags,./TAGS,tags,TAGS,/usr/lib/jvm/java-6-sun/src/tags,/home/tuommaki/Sources/httpcomponents-core-4.0/tags
 
 " ,/ C/C++/C#/Java // comments
 map ,c :s/^/\/\/ /<CR>
 map ,C :s.^// .. <CR> :noh <CR>
 
 
-if has("autocmd")
-  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-endif
+"if has("autocmd")
+"  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+"endif
 
 
-noremap <C-O> :call JavaInsertImport()<CR>
-function! JavaInsertImport()
-  exe "normal mz"
-  let cur_class = expand("<cword>")
-  try
-    if search('^\s*import\s.*\.' . cur_class . '\s*;') > 0
-      throw getline('.') . ": import already exist!"
-    endif
-    wincmd }
-    wincmd P
-    1
-    if search('^\s*public.*\s\%(class\|interface\)\s\+' . cur_class) > 0
-      1
-      if search('^\s*package\s') > 0
-        yank y
-      else
-        throw "Package definition not found!"
-      endif
-    else
-      throw cur_class . ": class not found!"
-    endif
-    wincmd p
-    normal! G
-    " insert after last import or in first line
-    if search('^\s*import\s', 'b') > 0
-      put y
-    else
-      1
-      put! y
-    endif
-    substitute/^\s*package/import/g
-    substitute/\s\+/ /g
-    exe "normal! 2ER." . cur_class . ";\<Esc>lD"
-  catch /.*/
-    echoerr v:exception
-  finally
-    " wipe preview window (from buffer list)
-    silent! wincmd P
-    if &previewwindow
-      bwipeout
-    endif
-    exe "normal! `z"
-  endtry
-endfunction
-
+" noremap <C-O> :call JavaInsertImport()<CR>
+" function! JavaInsertImport()
+"   exe "normal mz"
+"   let cur_class = expand("<cword>")
+"   try
+"     if search('^\s*import\s.*\.' . cur_class . '\s*;') > 0
+"       throw getline('.') . ": import already exist!"
+"     endif
+"     wincmd }
+"     wincmd P
+"     1
+"     if search('^\s*public.*\s\%(class\|interface\)\s\+' . cur_class) > 0
+"       1
+"       if search('^\s*package\s') > 0
+"         yank y
+"       else
+"         throw "Package definition not found!"
+"       endif
+"     else
+"       throw cur_class . ": class not found!"
+"     endif
+"     wincmd p
+"     normal! G
+"     " insert after last import or in first line
+"     if search('^\s*import\s', 'b') > 0
+"       put y
+"     else
+"       1
+"       put! y
+"     endif
+"     substitute/^\s*package/import/g
+"     substitute/\s\+/ /g
+"     exe "normal! 2ER." . cur_class . ";\<Esc>lD"
+"   catch /.*/
+"     echoerr v:exception
+"   finally
+"     " wipe preview window (from buffer list)
+"     silent! wincmd P
+"     if &previewwindow
+"       bwipeout
+"     endif
+"     exe "normal! `z"
+"   endtry
+" endfunction
+" 
 
 "function! JavaLoadClassTemplate(classname)
 " TODO: Code you damn monkey!  
