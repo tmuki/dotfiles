@@ -60,12 +60,12 @@ settings.audio.Togg = 'mocp --toggle-pause'
 settings.audio.Next = 'mocp --next'
 settings.audio.Stop = 'mocp --stop'
 
---settings.theme_path = awful.util.getdir('config') .. '/themes/zenmine'
+settings.theme_path = awful.util.getdir('config') .. '/themes/zenmine'
 
 if settings.theme_path then
 	beautiful.init(settings.theme_path)
 else
-	beautiful.init('/usr/share/awesome/themes/default/theme.lua')
+	beautiful.init('/usr/share/awesome/themes/default/theme')
 end
 
 -- The layouts we will use
@@ -106,9 +106,13 @@ settings.tag_props =
 {
 	{ name = '1-web',   layout = settings.layouts[1], mwfact = 0.6 },
 	{ name = '2-dev',   layout = settings.layouts[1], mwfact = 0.6 },
-	{ name = '3-media', layout = settings.layouts[2], },
-	{ name = '4-fun',   layout = settings.layouts[1], },
-	{ name = '5-misc',  layout = settings.layouts[2], },
+	{ name = '3', layout = settings.layouts[3], },
+	{ name = '4',   layout = settings.layouts[1], },
+	{ name = '5',  layout = settings.layouts[4], },
+  { name = '6',  layout = settings.layouts[4], },
+  { name = '7',  layout = settings.layouts[4], },
+  { name = '8',  layout = settings.layouts[4], },
+  { name = '9',  layout = settings.layouts[4], }
 }
 
 for s = 1, screen.count() do
@@ -359,19 +363,18 @@ settings.keys =
 	key({ settings.modmask, 'Shift'   }, 'n',      function () awful.util.spawn(settings.apps.nexuiz     ) end),
 
   -- dmenu
---	key({ settings.modmask,           }, 'p',      function () awful.util.spawn("`dmenu_path | dmenu -b`") end),
-	key({ settings.modmask,           }, 'p',      function () awful.util.spawn(awful.util.pread('dmenu_path | dmenu -i -fn "Terminus:h8" -p "Execute:" -b')) end),
+	key({ settings.modmask,           }, 'p',      function () awful.util.spawn("`dmenu_path | dmenu -b`") end),
 
 	-- Volume control.
-	key({ }, '#160', function () awful.util.spawn(settings.audio.Mute) end),
-	key({ }, '#174', function () awful.util.spawn(settings.audio.Down) end),
-	key({ }, '#176', function () awful.util.spawn(settings.audio.Up  ) end),
+	key({ }, '#121', function () awful.util.spawn(settings.audio.Mute) end),
+	key({ }, '#122', function () awful.util.spawn(settings.audio.Down) end),
+	key({ }, '#123', function () awful.util.spawn(settings.audio.Up  ) end),
 
 	-- Media player controls.
-	key({ }, '#144', function () awful.util.spawn(settings.audio.Prev) end),
-	key({ }, '#162', function () awful.util.spawn(settings.audio.Togg) end),
-	key({ }, '#153', function () awful.util.spawn(settings.audio.Next) end),
-	key({ }, '#164', function () awful.util.spawn(settings.audio.Stop) end),
+	key({ }, '#173', function () awful.util.spawn(settings.audio.Prev) end),
+	key({ }, '#172', function () awful.util.spawn(settings.audio.Togg) end),
+	key({ }, '#171', function () awful.util.spawn(settings.audio.Next) end),
+	key({ }, '#174', function () awful.util.spawn(settings.audio.Stop) end),
 
 	-- Client window manipulation.
 	key({ settings.modmask,           }, 'u', awful.client.urgent.jumpto                 ),
@@ -423,7 +426,7 @@ settings.ckeys =
 }
 
 -- Tag manipulation
-keynumber = 5
+keynumber = 9
 for i = 1, keynumber do
 	-- Mod + # == Switch to tag.
 	table.insert(

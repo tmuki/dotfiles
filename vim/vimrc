@@ -51,14 +51,14 @@ set foldnestmax=2
 
 " ------- ECLIM --------------
 
-let g:EclimBrowser='firefox'
+" let g:EclimBrowser='firefox'
 
 
 
-map <F8> :ProjectTree jmemsearch<CR>
-noremap <C-O> :JavaImportMissing<CR>
+" map <F8> :ProjectTree jmemsearch<CR>
+" noremap <C-O> :JavaImportMissing<CR>
 
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+" autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 " ----- END OF ECLIM ---------
 
@@ -84,7 +84,7 @@ autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 map F :let &fen = !&fen<CR>
 
 " Replaced by Eclims project tree
-"map <F8> :NERDTreeToggle<CR>
+map <F8> :NERDTreeToggle<CR>
 map ,f <Esc>:1,$!xmllint --format -<CR>
 
 "set tags=./tags,./TAGS,tags,TAGS,~/Work/Repositories/EyeOne/trunk/Source/server/tags,/usr/lib/jvm/java-6-sun/src/tags
