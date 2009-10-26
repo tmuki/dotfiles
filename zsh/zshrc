@@ -1,8 +1,97 @@
+
+PATH=$PATH:/opt/java/bin:/home/tmak/apps/apache-maven-2.2.1/bin
+PATH=$PATH:/home/tmak/apps/bin:/home/tmak/.cabal/bin
+
+JAVA_HOME=/opt/java
+
+EDITOR=/usr/bin/vim
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt appendhistory
+
+# Don't expand files matching:
+fignore=(.o .c~ .old .pro)
+
+setopt   notify globdots pushdtohome
+setopt   recexact longlistjobs
+setopt   autoresume pushdsilent
+setopt   autopushd pushdminus extendedglob rcquotes mailwarning
+unsetopt BG_NICE HUP autoparamslash
+
+
+# Manpath & Manualpage search order
+export MANSECT=3:2:9:8:1:5:4:7:6:n
+
+
+
+PROMPT="%B%m%#%b "
+RPROMPT="%B[%~][%t%s%]%b"
+
 umask 027
 alias ls='ls -G'
 
-export EDITOR=/usr/bin/vim
-export JAVA_HOME=/usr/lib/jvm/java-6-sun
-export MANPATH=/opt/software/man:/opt/software/share/man:/usr/share/man
+
+# ---[ Key bindings ]--------------------------------------------------
+bindkey -e
+bindkey '\e[3~'  delete-char
+bindkey '\eq'    push-line-or-edit
+bindkey '^p'     history-search-backward
+bindkey '\e[3A'  history-beginning-search-backward
+bindkey '\e[3B'  history-beginning-search-forward
+bindkey -s '^B' " &\n"
 
 
+# ---[ Terminal settings ]---------------------------------------------
+case "$TERM" in
+	linux)
+		bindkey '\e[1~' beginning-of-line	# Home
+		bindkey '\e[4~' end-of-line		# End
+		bindkey '\e[3~' delete-char		# Del
+		bindkey '\e[2~' overwrite-mode		# Insert
+		;;
+	screen)
+		# In Linux console
+		bindkey '\e[1~' beginning-of-line	# Home
+		bindkey '\e[4~' end-of-line		# End
+		bindkey '\e[3~' delete-char		# Del
+		bindkey '\e[2~' overwrite-mode		# Insert
+		bindkey '\e[7~' beginning-of-line	# home
+		bindkey '\e[8~' end-of-line		# end
+		# In rxvt
+		bindkey '\eOc' forward-word		# ctrl cursor right
+		bindkey '\eOd' backward-word		# ctrl cursor left
+		bindkey '\e[3~' backward-delete-char	# This should not be necessary!
+		;;
+	rxvt*)
+		bindkey '\e[7~' beginning-of-line	# home
+		bindkey '\e[8~' end-of-line		# end
+		bindkey '\eOc' forward-word		# ctrl cursor right
+		bindkey '\eOd' backward-word		# ctrl cursor left
+		bindkey '\e[3~' backward-delete-char	# This should not be necessary!
+		bindkey '\e[2~' overwrite-mode		# Insert
+		;;
+	xterm*)
+		bindkey "\e[1~" beginning-of-line	# Home
+		bindkey "\e[4~" end-of-line		# End
+		bindkey '\e[3~' delete-char		# Del
+		bindkey '\e[2~' overwrite-mode		# Insert
+		;;
+	sun)
+		bindkey '\e[214z' beginning-of-line       # Home
+		bindkey '\e[220z' end-of-line             # End
+		bindkey '^J'      delete-char             # Del
+		bindkey '^H'      backward-delete-char    # Backspace
+		bindkey '\e[247z' overwrite-mode          # Insert
+		;;
+esac
+
+
+
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/tmak/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall

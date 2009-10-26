@@ -1,0 +1,16 @@
+Config { font = "xft:Terminus:size=6"
+       , bgColor = "#37383a"
+       , fgColor = "#aecf96"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Cpu ["-L","3","-H","50","--high","#f0c040"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a, %b %_d %H:%M" "date" 10
+                    , Run Battery [] 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader%}{%cpu% · %memory% · %swap% · %battery% · %date%"
+       }
